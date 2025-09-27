@@ -12,7 +12,7 @@ export default function First(){
     <div className="bg-lime-400 h-40">6</div>
     
     
-    <div className="bg-pink-700 h-full lg:row-span-2" >7</div>
+    <div className="bg-pink-700 lg:h-full h-40 lg:row-span-2" >7</div>
     <div className="bg-green-950 h-40 lg:col-span-2">8</div>
     <div className=" bg-rose-700 h-40 ">9</div>
     
