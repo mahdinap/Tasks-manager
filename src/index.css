@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@font-face {
+    font-family: suse;
+    src: url("../public/fonts/SUSEMono-Medium.woff2");
+     font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: ubuntu;
+    src: url("../public/fonts/Ubuntu-Medium.woff2");
+     font-weight: 500;
+    font-style: normal;
+}
+@theme{
+    --font-suse:"suse";
+    --font-ubuntu:"ubuntu"
+}
