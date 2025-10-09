@@ -1,4 +1,5 @@
 import Buttons from "../components/buttons";
+import Checkbox from "../components/checkbox";
 import Subtitle from "../components/subtitle";
 import Input from "../inputs";
 
@@ -13,8 +14,9 @@ export default function Login(){
         </div>
         <div className="flex flex-col gap-5 p-5">
             <h1 className="text-sky-950  text-4xl text-center font-bold font-suse" >log in</h1>
-            <Input label="Email" placholder="Enter Your User Email" type="email" />
+            <Input label="Email" placholder="Enter Your Email" type="email" />
             <Input label="Password" placholder="" type="pasword" />
+            <Checkbox label='Remmber Password' id="remmberPassword"/>
             <Buttons label="Log In" color="sky" />
         </div>
         </div>

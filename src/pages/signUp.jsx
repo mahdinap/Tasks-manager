@@ -1,4 +1,5 @@
 import Buttons from "../components/buttons";
+import Checkbox from "../components/checkbox";
 import Subtitle from "../components/subtitle";
 import Input from "../inputs";
 
@@ -16,6 +17,7 @@ export default function SingUp(){
             <Input label="User Name" placholder="Enter Your User Name" type="text" />
             <Input label="Email" placholder="Enter Your User Email" type="email" />
             <Input label="Password" placholder="" type="pasword" />
+            <Checkbox label="Remmeber Password" id="remmberPassword"  />
             <Buttons label="Sign Up" color="sky" />
         </div>
 
