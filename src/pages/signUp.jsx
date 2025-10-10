@@ -1,9 +1,25 @@
+import { useState } from "react";
 import Buttons from "../components/buttons";
 import Checkbox from "../components/checkbox";
 import Subtitle from "../components/subtitle";
 import Input from "../inputs";
 
 export default function SingUp(){
+    const [info,setInfo]=useState({
+        "username":"",
+        "email":"",
+        "password":"",
+        "remmberPass":false
+    })
+    function onChange(e){
+        const id=e.target.id
+        const value=e.target.type==="checkbox"?e.target.checked:e.target.value
+        setInfo((prev)=>({...prev,[id]:value}))
+    }
+    function handlerClick(){
+        console.log(info);
+        
+    }
     return(
         <>
         <div className="flex flex-col items-center justify-center ">
@@ -14,11 +30,11 @@ export default function SingUp(){
         </div>
         <div className="flex flex-col gap-5 p-5">
             <h1 className="text-sky-950 text-4xl text-center font-bold font-suse ">Sign Up</h1>
-            <Input label="User Name" placholder="Enter Your User Name" type="text" />
-            <Input label="Email" placholder="Enter Your User Email" type="email" />
-            <Input label="Password" placholder="" type="pasword" />
-            <Checkbox label="Remmeber Password" id="remmberPassword"  />
-            <Buttons label="Sign Up" color="sky" />
+            <Input label="User Name" placholder="Enter Your User Name" type="text" onChange={onChange} value={info.username} id='username'/>
+            <Input label="Email" placholder="Enter Your User Email" type="email" onChange={onChange} value={info.email} id='email' />
+            <Input label="Password" placholder="" type="password" id='password' onChange={onChange} value={info.password} />
+            <Checkbox label="Remmeber Password" id="remmberPass" onChange={onChange} value={info.remmberPass} />
+            <Buttons label="Sign Up" color="sky" onClick={handlerClick} />
         </div>
 
         </div>
