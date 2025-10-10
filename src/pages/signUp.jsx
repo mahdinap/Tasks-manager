@@ -16,7 +16,8 @@ export default function SingUp(){
         const value=e.target.type==="checkbox"?e.target.checked:e.target.value
         setInfo((prev)=>({...prev,[id]:value}))
     }
-    function handlerClick(){
+    function handlerClick(event){
+        event.preventDefault()
         console.log(info);
         
     }
@@ -28,14 +29,20 @@ export default function SingUp(){
             <h1 className="text-white text-4xl font-bold mb-4 wrap-none font-ubuntu">welcome to task manager</h1>
             <span className="text-white text-lg font-semibold">organize your tasks and stay on top of your productivity</span>
         </div>
-        <div className="flex flex-col gap-5 p-5">
+        <div>
+
             <h1 className="text-sky-950 text-4xl text-center font-bold font-suse ">Sign Up</h1>
+        
+            <form className="flex flex-col gap-5 p-5">
             <Input label="User Name" placholder="Enter Your User Name" type="text" onChange={onChange} value={info.username} id='username'/>
             <Input label="Email" placholder="Enter Your User Email" type="email" onChange={onChange} value={info.email} id='email' />
             <Input label="Password" placholder="" type="password" id='password' onChange={onChange} value={info.password} />
             <Checkbox label="Remmeber Password" id="remmberPass" onChange={onChange} value={info.remmberPass} />
             <Buttons label="Sign Up" color="sky" onClick={handlerClick} />
+
+            </form>
         </div>
+        
 
         </div>
         <Subtitle page="signup"/>

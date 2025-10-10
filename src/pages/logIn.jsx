@@ -21,7 +21,9 @@ function onChange(e){
 
     setInfo((prev=>({...prev,[id]:value})))
     }
-    function handler(){
+    function handler(event){
+        event.preventDefault()
+        
        console.log(info); 
     }
     return(
@@ -32,8 +34,10 @@ function onChange(e){
             <h1 className="text-white text-4xl font-bold mb-4 wrap-none font-ubuntu">welcome to task manager</h1>
             <span className="text-white text-lg font-semibold">organize your tasks and stay on top of your productivity</span>
         </div>
-        <div className="flex flex-col gap-5 p-5">
-            <h1 className="text-sky-950  text-4xl text-center font-bold font-suse" >log in</h1>
+        <div>
+
+        <h1 className="text-sky-950  text-4xl text-center font-bold font-suse" >log in</h1>
+        <form className="flex flex-col gap-5 p-5">
             <Input label="Email" placholder="Enter Your Email" type="email" value={info.email} onChange={onChange} id="email"/>
             <Input label="Password" placholder="" type="pasword" value={info.password} onChange={onChange} id="password"/>
             <div>
@@ -41,6 +45,7 @@ function onChange(e){
             
             </div>
             <Buttons label="Log In" color="sky" onClick={handler} />
+        </form>
         </div>
         </div>
             <Subtitle page="login"/> 
