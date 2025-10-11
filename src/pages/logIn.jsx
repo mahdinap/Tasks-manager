@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Buttons from "../components/buttons";
 import Checkbox from "../components/checkbox";
 import Subtitle from "../components/subtitle";
@@ -8,7 +8,12 @@ import Input from "../inputs";
 
 
 
+
 export default function Login(){
+    useEffect(()=>{
+        document.title="Log in"
+    },[])
+
     const [info,setInfo]=useState({
 "email":"",
 "password":"",
@@ -50,6 +55,7 @@ function onChange(e){
         </div>
             <Subtitle page="login"/> 
         </div>
+        
     
         
         </>

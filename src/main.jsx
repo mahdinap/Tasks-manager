@@ -6,6 +6,7 @@ import './index.css'
 import SingUp from './pages/signUp.jsx'
 import Login from './pages/logIn.jsx';
 import NotFoundPage from './pages/notfoundpage.jsx';
+import Wellcome from './pages/wellcom.jsx';
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,12 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login/>,
+    
+  }
+  ,
+  {
+    path: "/wellcome",
+    element: <Wellcome/>,
   }
 ]);
 

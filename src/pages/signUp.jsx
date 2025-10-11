@@ -3,8 +3,13 @@ import Buttons from "../components/buttons";
 import Checkbox from "../components/checkbox";
 import Subtitle from "../components/subtitle";
 import Input from "../inputs";
+import { useEffect } from "react";
 
 export default function SingUp(){
+    useEffect(() => {
+  document.title = "Sign UP";
+}, []);
+
     const [info,setInfo]=useState({
         "username":"",
         "email":"",
