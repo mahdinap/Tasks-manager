@@ -7,6 +7,7 @@ import SingUp from './pages/signUp.jsx'
 import Login from './pages/logIn.jsx';
 import NotFoundPage from './pages/notfoundpage.jsx';
 import Wellcome from './pages/wellcom.jsx';
+import CreateNewTsk from './pages/create.jsx';
 
 
 const router = createBrowserRouter([
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
   {
     path: "/wellcome",
     element: <Wellcome/>,
+  }
+   ,
+  {
+    path: "/create",
+    element: <CreateNewTsk/>,
   }
 ]);
 

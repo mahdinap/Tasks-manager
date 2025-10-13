@@ -3,11 +3,12 @@ export default function Wellcome(props){
     const {name}=props
      useEffect(() => {
     // وقتی وارد این صفحه می‌شیم، رنگ پس‌زمینه کل صفحه تغییر کنه
-    document.body.style.backgroundColor = "#e0f2fe"; // رنگ آبی روشن
+    document.body.classList.add("bg-sky-100") // رنگ آبی روشن
+    document.title="Wellcome"
     
     // وقتی از این صفحه خارج می‌شیم، رنگ برگرده
     return () => {
-      document.body.style.backgroundColor = "";
+      document.body.classList.remove("bg-sky-100");
     };
   }, []);
     return(
