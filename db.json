@@ -3,7 +3,8 @@
     {
         "id":1,
         "name":"mahdi",
-        "age":34
+        "age":34,
+        "loc":"qazvin"
     }
   ]
 }
