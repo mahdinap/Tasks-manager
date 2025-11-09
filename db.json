@@ -2,13 +2,10 @@
   "users": [
     {
       "email": "mahdi1nap@gmail.com",
-      "password": "$2a$10$tHhIHZhjWwsOAA0TudB7luMij2Uh5RN/zqcyCHBuAB3ubsSFtXDlW",
+      "password": "$2a$10$TPWV/be4nOQ0Xlc1G5xmsuw6hH4erDR2pZwPvs92iw8Jeief.CkAi",
+      "username": "mahdiii.n91",
+      "remmberPass": false,
       "id": 1
-    },
-    {
-      "email": "mahdi.nap57@gmail.com",
-      "password": "$2a$10$H73KgiwlX00yRWyfw6beKuot0LJjAWp1chN.L1NP.W5sEsx7Wjbx2",
-      "id": 2
     }
   ]
 }

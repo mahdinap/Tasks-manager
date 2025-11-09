@@ -27,14 +27,14 @@ export default function SingUp(){
         event.preventDefault()
         try{
 
-            const res=await axios.post("http://localhost:5000/register",{
-                "email":info.email,
-                "password":info.password
-            })
+            const res=await axios.post("http://localhost:5000/register",info)
             console.log(res)
-            console.log(res.data.accessToken)
-        }catch(error){
-            console.log("error is :",error);
+            localStorage.setItem("Token",res.data.accessToken)
+            
+        }catch(res){
+
+            console.log("error is :",res.response.data);
+            alert(res.response.data)
             
         }
         

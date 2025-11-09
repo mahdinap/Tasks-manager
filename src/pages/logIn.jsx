@@ -3,6 +3,7 @@ import Buttons from "../components/buttons";
 import Checkbox from "../components/checkbox";
 import Subtitle from "../components/subtitle";
 import Input from "../inputs";
+import axios from "axios";
 
 
 
@@ -26,10 +27,18 @@ function onChange(e){
 
     setInfo((prev=>({...prev,[id]:value})))
     }
-    function handler(event){
+    async function handler(event){
         event.preventDefault()
-        
-       console.log(info); 
+        try{
+            const res= await axios.post("http://localhost:5000/signin",info)
+            console.log(res);
+            
+        }catch(res){
+            console.log("Error is:",res.response.data);
+            alert(res.response.data)
+            
+        }
+       
     }
     return(
         <>
@@ -42,14 +51,14 @@ function onChange(e){
         <div>
 
         <h1 className="text-sky-950  text-4xl text-center font-bold font-suse" >log in</h1>
-        <form className="flex flex-col gap-5 p-5">
+        <form className="flex flex-col gap-5 p-5" onSubmit={handler}>
             <Input label="Email" placholder="Enter Your Email" type="email" value={info.email} onChange={onChange} id="email"/>
-            <Input label="Password" placholder="" type="pasword" value={info.password} onChange={onChange} id="password"/>
+            <Input label="Password" placholder="" type="password" value={info.password} onChange={onChange} id="password"/>
             <div>
             <Checkbox label='Remmber Password'  id="remmber" name="remmberPass" onChange={onChange} checked={info.remmber} />
             
             </div>
-            <Buttons label="Log In" color="sky" onClick={handler} />
+            <Buttons label="Log In" color="sky" />
         </form>
         </div>
         </div>
