@@ -4,6 +4,8 @@ import Checkbox from "../components/checkbox";
 import Subtitle from "../components/subtitle";
 import Input from "../inputs";
 import { useEffect } from "react";
+import axios from "axios"
+
 
 export default function SingUp(){
     useEffect(() => {
@@ -23,8 +25,19 @@ export default function SingUp(){
     }
     async function handleSubmit(event){
         event.preventDefault()
-        const info=await 
-        console.log(info);
+        try{
+
+            const res=await axios.post("http://localhost:5000/register",{
+                "email":info.email,
+                "password":info.password
+            })
+            console.log(res)
+            console.log(res.data.accessToken)
+        }catch(error){
+            console.log("error is :",error);
+            
+        }
+        
         
     }
     return(

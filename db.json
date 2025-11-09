@@ -1,11 +1,14 @@
 {
   "users": [
     {
-        "id":1,
-        "name":"mahdi",
-        "age":34,
-        "loc":"qazvin",
-        "sal":123
+      "email": "mahdi1nap@gmail.com",
+      "password": "$2a$10$tHhIHZhjWwsOAA0TudB7luMij2Uh5RN/zqcyCHBuAB3ubsSFtXDlW",
+      "id": 1
+    },
+    {
+      "email": "mahdi.nap57@gmail.com",
+      "password": "$2a$10$H73KgiwlX00yRWyfw6beKuot0LJjAWp1chN.L1NP.W5sEsx7Wjbx2",
+      "id": 2
     }
   ]
 }
