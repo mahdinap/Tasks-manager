@@ -30,6 +30,7 @@ export default function SingUp(){
             const res=await axios.post("http://localhost:5000/register",info)
             console.log(res)
             localStorage.setItem("Token",res.data.accessToken)
+            localStorage.setItem("name",info.username)
             
         }catch(res){
 

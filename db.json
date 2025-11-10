@@ -2,9 +2,9 @@
   "users": [
     {
       "email": "mahdi1nap@gmail.com",
-      "password": "$2a$10$TPWV/be4nOQ0Xlc1G5xmsuw6hH4erDR2pZwPvs92iw8Jeief.CkAi",
-      "username": "mahdiii.n91",
-      "remmberPass": false,
+      "password": "$2a$10$pBIi7xFlXvjY6Zu/1Umse.E.x3Wx6hum9N3jhR3SD4wXZ6xapDFbS",
+      "username": "mahdi",
+      "remmberPass": true,
       "id": 1
     }
   ]
