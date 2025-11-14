@@ -27,7 +27,7 @@ function onChange(e){
 
     setInfo((prev=>({...prev,[id]:value})))
     }
-    async function handler(event){
+async function handler(event){
         event.preventDefault()
         try{
             const res= await axios.post("http://localhost:5000/signin",info)
@@ -52,13 +52,13 @@ function onChange(e){
 
         <h1 className="text-sky-950  text-4xl text-center font-bold font-suse" >log in</h1>
         <form className="flex flex-col gap-5 p-5" onSubmit={handler}>
-            <Input label="Email" placholder="Enter Your Email" type="email" value={info.email} onChange={onChange} id="email"/>
-            <Input label="Password" placholder="" type="password" value={info.password} onChange={onChange} id="password"/>
+            <Input label="Email" placholder="Enter Your Email" type="email" value={info.email} onChange={onChange} id="email" className="p-2 shadow-md border border-stone-200 rounded-md"/>
+            <Input label="Password" placholder="" type="password" value={info.password} onChange={onChange} id="password" className="p-2 shadow-md border border-stone-200 rounded-md"/>
             <div>
             <Checkbox label='Remmber Password'  id="remmber" name="remmberPass" onChange={onChange} checked={info.remmber} />
             
             </div>
-            <Buttons label="Log In" color="sky" />
+            <Buttons label="Log In" className="bg-sky-900 text-white hover:bg-sky-950 rounded-md py-2"/>
         </form>
         </div>
         </div>

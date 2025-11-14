@@ -54,11 +54,11 @@ export default function SingUp(){
             <h1 className="text-sky-950 text-4xl text-center font-bold font-suse ">Sign Up</h1>
         
             <form className="flex flex-col gap-5 p-5" onSubmit={handleSubmit}>
-            <Input label="User Name" placholder="Enter Your User Name" type="text" onChange={onChange} value={info.username} id='username'/>
-            <Input label="Email" placholder="Enter Your User Email" type="email" onChange={onChange} value={info.email} id='email' />
-            <Input label="Password" placholder="" type="password" id='password' onChange={onChange} value={info.password} />
-            <Checkbox label="Remmeber Password" id="remmberPass" onChange={onChange} value={info.remmberPass} />
-            <Buttons label="Sign Up" color="sky" />
+            <Input label="User Name" placholder="Enter Your User Name" type="text" onChange={onChange} value={info.username} id='username' className="p-2 shadow-md border border-stone-200 rounded-md"/>
+            <Input label="Email" placholder="Enter Your User Email" type="email" onChange={onChange} value={info.email} id='email' className="p-2 shadow-md border border-stone-200 rounded-md" />
+            <Input label="Password" placholder="" type="password" id='password' onChange={onChange} value={info.password} className="p-2 shadow-md border border-stone-200 rounded-md"/>
+            <Checkbox label="Remmeber Password" id="remmberPass" onChange={onChange} value={info.remmberPass} className="p-2 shadow-md border border-stone-200 rounded-md" />
+            <Buttons label="Sign Up" className="bg-sky-900 hover:bg-sky-950 text-white rounded-md py-2"  />
 
             </form>
         </div>
