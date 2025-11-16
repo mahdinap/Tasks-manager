@@ -15,7 +15,9 @@ export default function CreateNewTsk(){
         }
     },[])
 
-    function handlerOnChange(e){
+   
+    function handlerSubmiit(e){
+        e.preventDefault()
         const value=e.target.value
         const id=e.target.id
         setTask(
@@ -26,11 +28,6 @@ export default function CreateNewTsk(){
         )
         console.log(task);
         
-    }
-
-    function handlerSubmiit(e){
-        e.preventDefault()
-        console.log(e.value);
         
     }
     return(
@@ -40,9 +37,9 @@ export default function CreateNewTsk(){
     <Buttons label="< Back" className=" bg-sky-900 rounded-lg shadow-md font-semibold transition-all duration-200 py-2 px-5 text-white active:scale-100 hover:bg-sky-950 w-30" />
         <h2 className="text-sky-950 text-3xl  text-center">Creat New task</h2>
         <form action="" className="flex flex-col gap-3" onSubmit={handlerSubmiit}>
-        <Input onChange={handlerOnChange} label="Task Name" placholder="Enter your task" id="taskName" className="p-2 shadow-md border border-stone-200 rounded-md"/>
-        <DatePicker className="border" id="dueDate" onChange={handlerOnChange}/>
-      <Select placholder="Set provirty"/>
+        <Input  label="Task Name" placholder="Enter your task" id="taskName" className="p-2 shadow-md border border-stone-200 rounded-md"/>
+        <DatePicker className="border" id="dueDate" />
+        <Select />
         <div className="flex justify-end my-4">
 
         <Buttons label="Save Task" className=" bg-sky-900 rounded-lg shadow-md font-semibold transition-all duration-200 py-2 px-5 text-white active:scale-100 hover:bg-sky-950 w-30 "/>
