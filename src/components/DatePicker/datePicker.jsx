@@ -3,7 +3,8 @@ import { DatePickerInput } from '@mantine/dates';
 import { MantineProvider } from '@mantine/core';
 
 
-function DatePicker() {
+function DatePicker(props) {
+  const{id,onChange}=props
   const [value, setValue] = useState(null);
   console.log(value);
   
@@ -19,7 +20,8 @@ function DatePicker() {
           label="Due date"
           placeholder="Select Due Date"
           value={value}
-          onChange={setValue}
+          onChange={onChange}
+          id={id}
         />
     </MantineProvider>
     </>
