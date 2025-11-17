@@ -8,7 +8,7 @@ export default function NotFoundPage(){
 
 
         <div className="flex gap-4">
-        <Link to={"/"}>
+        <Link to={"/tasks"}>
         <button className="w-32 mt-4 py-2 px-4 bg-sky-500 rounded-md shadow-md text-white cursor-pointer hover:bg-sky-600">Go Home</button>
         </Link>
         <Link to={"/login"}>
