@@ -1,5 +1,9 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 export default function NotFoundPage(){
+    useEffect(()=>{
+        document.title="Not Found"
+    })
     return(
         <>
         <div className=" container mx-auto  flex items-center justify-center flex-col h-full gap-4">

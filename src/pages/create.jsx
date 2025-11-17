@@ -5,6 +5,7 @@ import DatePicker from "../components/DatePicker/datePicker";
 import Select from "../components/select";
 import Tasks from "./tasks";
 import { useNavigate } from "react-router-dom";
+import Layout from "./layout/layout";
 
 
 export default function CreateNewTsk(){
@@ -29,7 +30,9 @@ export default function CreateNewTsk(){
     }
     return(
     <>
-    <div className="flex flex-col w-2/3 bg-white rounded-2xl p-3">
+    <Layout>
+
+    <div>
     
     <Buttons onClick={()=>{navigate("/tasks")}} label="< Back" className=" bg-sky-900 rounded-lg shadow-md font-semibold transition-all duration-200 py-2 px-5 text-white active:scale-100 hover:bg-sky-950 w-30" />
         <h2 className="text-sky-950 text-3xl  text-center">Creat New task</h2>
@@ -43,6 +46,7 @@ export default function CreateNewTsk(){
         </div>
         </form>
     </div>
+    </Layout>
     </>
     )
 }
