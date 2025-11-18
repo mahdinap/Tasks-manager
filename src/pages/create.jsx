@@ -8,26 +8,61 @@ import { useNavigate } from "react-router-dom";
 import Layout from "./layout/layout";
 
 
+
 export default function CreateNewTsk(){
-    const [task,setTask]=useState({})
     const  navigate=useNavigate()
+    const [task,setTask]=useState({
+        "taskName":"",
+        "due":null,
+        "Priority":""
+    })
 
-
-   
-    function handlerSubmiit(e){
-        e.preventDefault()
+    function handlerChange(e){
         const value=e.target.value
         const id=e.target.id
         setTask(
             (prev)=>(
                 {...prev,[id]:value}
-            )
-                
+            )   
         )
-        console.log(task);
-        
         
     }
+    // function handlerSubmiit(e){
+    //     e.preventDefault()
+    //     console.log(task);
+    //     localStorage.setItem("tasks",JSON.stringify(task))
+
+
+
+    //     setTask({"taskName":"",
+    //     "due":null,
+    //     "Priority":""})
+    //     navigate("/tasks")
+    // }
+    function handlerSubmiit(e){
+    e.preventDefault();
+    console.log(task);
+
+    // 1. خواندن آرایه قبلی یا آرایه خالی
+    const existingTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    // 2. اضافه کردن task جدید
+    const updatedTasks = [...existingTasks, task];
+
+    // 3. ذخیره در localStorage
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+
+    // 4. ریست فرم
+    setTask({
+        taskName: "",
+        due: null,
+        Priority: ""
+    });
+
+    // 5. رفتن به صفحه tasks
+    navigate("/tasks");
+}
+
     return(
     <>
     <Layout>
@@ -37,9 +72,9 @@ export default function CreateNewTsk(){
     <Buttons onClick={()=>{navigate("/tasks")}} label="< Back" className=" bg-sky-900 rounded-lg shadow-md font-semibold transition-all duration-200 py-2 px-5 text-white active:scale-100 hover:bg-sky-950 w-30" />
         <h2 className="text-sky-950 text-3xl  text-center">Creat New task</h2>
         <form action="" className="flex flex-col gap-3" onSubmit={handlerSubmiit}>
-        <Input  label="Task Name" placholder="Enter your task" id="taskName" className="p-2 shadow-md border border-stone-200 rounded-md"/>
-        <DatePicker className="border" id="dueDate" />
-        <Select />
+        <Input  label="Task Name" placholder="Enter your task" id="taskName" onChange={handlerChange} className="p-2 shadow-md border border-stone-200 rounded-md" value={task.taskName}/>
+        <DatePicker className="border" id="due" value={task.due} placholder="enter date" onChange={(date)=>{setTask((prev)=>({...prev,due:date}))}} />
+        <Select id="Priority" value={task.Priority} onChange={handlerChange} />
         <div className="flex justify-end my-4">
 
         <Buttons label="Save Task" className=" bg-sky-900 rounded-lg shadow-md font-semibold transition-all duration-200 py-2 px-5 text-white active:scale-100 hover:bg-sky-950 w-30 "/>

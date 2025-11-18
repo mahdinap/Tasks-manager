@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Layout from "./layout/layout";
 export default function NotFoundPage(){
     useEffect(()=>{
         document.title="Not Found"
     })
     return(
-        <>
+        <Layout>
         <div className=" container mx-auto  flex items-center justify-center flex-col h-full gap-4">
         <h1 className="text-8xl text-stone-800 font-bold">404</h1>
         <h2 className="text-3xl text-stone-600" >Page Not Found!</h2>
@@ -21,6 +22,8 @@ export default function NotFoundPage(){
 
         </div>
         </div>
-        </>
+
+        </Layout>
+        
     )
 }

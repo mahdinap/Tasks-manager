@@ -26,6 +26,7 @@ function onChange(e){
     const value =e.target.type==="checkbox"?e.target.checked:e.target.value 
 
     setInfo((prev=>({...prev,[id]:value})))
+    
     }
 async function handler(event){
         event.preventDefault()

@@ -1,13 +1,11 @@
-import { useState } from 'react';
 import { DatePickerInput } from '@mantine/dates';
 import { MantineProvider } from '@mantine/core';
 
 
 function DatePicker(props) {
-  const{id,onChange}=props
-  const [value, setValue] = useState(null);
-  console.log(value);
-  
+  const{id,onChange,value,placeholder}=props
+ 
+ 
   return (
     <>
     <MantineProvider >
@@ -18,7 +16,7 @@ function DatePicker(props) {
         }
         rightSectionPointerEvents="none"
           label="Due date"
-          placeholder="Select Due Date"
+          placeholder="select date"
           value={value}
           onChange={onChange}
           id={id}
