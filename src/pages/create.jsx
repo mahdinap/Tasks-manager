@@ -12,6 +12,7 @@ import Layout from "./layout/layout";
 export default function CreateNewTsk(){
     const  navigate=useNavigate()
     const [task,setTask]=useState({
+        id:Date.now(),
         "taskName":"",
         "due":null,
         "Priority":""
@@ -27,39 +28,23 @@ export default function CreateNewTsk(){
         )
         
     }
-    // function handlerSubmiit(e){
-    //     e.preventDefault()
-    //     console.log(task);
-    //     localStorage.setItem("tasks",JSON.stringify(task))
 
-
-
-    //     setTask({"taskName":"",
-    //     "due":null,
-    //     "Priority":""})
-    //     navigate("/tasks")
-    // }
     function handlerSubmiit(e){
     e.preventDefault();
     console.log(task);
-
-    // 1. خواندن آرایه قبلی یا آرایه خالی
     const existingTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-
-    // 2. اضافه کردن task جدید
     const updatedTasks = [...existingTasks, task];
 
-    // 3. ذخیره در localStorage
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 
-    // 4. ریست فرم
     setTask({
+        
         taskName: "",
         due: null,
         Priority: ""
     });
-
-    // 5. رفتن به صفحه tasks
+    console.log(task.id);
+    
     navigate("/tasks");
 }
 

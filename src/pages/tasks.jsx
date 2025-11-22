@@ -7,12 +7,21 @@ import TrashIcon from "../components/icons/trashIcon";
 
 
 
+
 export default function Tasks(props){
     const [data,setData]=useState([])
+    
    useEffect(()=>{
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     setData(tasks);
 }, []);
+
+function handlerDeletTask(id){
+   const updateList= data.filter(task=>task.id !== id)
+   setData(updateList)
+   localStorage.setItem("tasks", JSON.stringify(updateList))
+
+}
 
     const {title,due,priority }=props
     const navigate=useNavigate()
@@ -39,11 +48,11 @@ export default function Tasks(props){
                 {data.length===0?(
                 <p className="text-center mt-5 text-gray-500">No tasks found.</p>
                 ):
-                (data.map((task,index)=>{
+                (data.map((task)=>{
                 return (
-                <div key={index} className="task flex justify-between py-6 px-4 bg-blue-100 my-2 rounded-2xl">
+                <div key={task.id} className="task flex justify-between py-6 px-4 bg-blue-100 my-2 rounded-2xl">
                 <div className="taskDetails flex gap-2">
-                <Checkbox/>
+                <Checkbox onChange={()=>{}}/>
                 <div className="flex flex-col gap-1">
                     <h4 className="text-xl text-blue-900">{task.taskName}</h4>
                     <h5 className="text-sm text-stone-700">{task.due}</h5>
@@ -54,7 +63,7 @@ export default function Tasks(props){
                 className={`${priorityColor[task.Priority]} text-center py-0 px-3 rounded-2xl text-white flex items-center capitalize`}>
                 {task.Priority}
                 </span>
-                <TrashIcon className="text-sky-900 hover:cursor-pointer hover:text-sky-950" />
+                <TrashIcon className="text-sky-900 hover:cursor-pointer hover:text-sky-950" onClick={()=>{handlerDeletTask(task.id)}}/>
                 </div>
             </div>
             )}))
