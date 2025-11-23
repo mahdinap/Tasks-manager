@@ -3,6 +3,7 @@ import Checkbox from "../components/checkbox";
 import { useNavigate } from "react-router";
 import Layout from "./layout/layout";
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import TrashIcon from "../components/icons/trashIcon";
 
 
@@ -11,6 +12,12 @@ import TrashIcon from "../components/icons/trashIcon";
 export default function Tasks(props){
     const [data,setData]=useState([])
     const [filter,setFilter]=useState("all")
+
+    const itemVariants = {
+    initial: { opacity: 0, y: -8 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: 8 }
+  };
     
     const filteredTask=data.filter((task)=>{
         if(filter==="done") return task.completed===true
@@ -58,12 +65,23 @@ function handlerDeletTask(id){
             </div>
 
             <div>  
+            <AnimatePresence>
+
+            
                 {data.length===0?(
                 <p className="text-center mt-5 text-gray-500">No tasks found.</p>
                 ):
                 (filteredTask.map((task)=>{
                 return (
-                <div key={task.id} className={`task flex justify-between py-6 px-4 bg-blue-100 my-2 rounded-2xl ${task.completed?"bg-stone-300":""}`}>
+                <motion.div 
+                  layout 
+                  variants={itemVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={{ duration: 0.25 }} 
+                  key={task.id} 
+                  className={`task flex justify-between py-6 px-4 bg-blue-100 my-2 rounded-2xl ${task.completed?"bg-stone-300":""}`}>
                 <div className="taskDetails flex gap-2">
                 <Checkbox checked={task.completed} onChange={()=>{toggleComplete(task.id)}}/>
                 <div className="flex flex-col gap-1">
@@ -78,9 +96,10 @@ function handlerDeletTask(id){
                 </span>
                 <TrashIcon className="text-sky-900 hover:cursor-pointer hover:text-sky-950" onClick={()=>{handlerDeletTask(task.id)}}/>
                 </div>
-            </div>
+            </motion.div>
             )}))
             }
+            </AnimatePresence>
             </div>
         </Layout>
     )
