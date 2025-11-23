@@ -10,7 +10,22 @@ import TrashIcon from "../components/icons/trashIcon";
 
 export default function Tasks(props){
     const [data,setData]=useState([])
+    const [filter,setFilter]=useState("all")
     
+    const filteredTask=data.filter((task)=>{
+        if(filter==="done") return task.completed===true
+        if(filter==="notdone") return task.completed===false
+        return true
+    })
+
+    function toggleComplete(id){
+    const updated = data.map(task =>
+        task.id === id ? {...task, completed: !task.completed} : task
+    );
+    setData(updated);
+    localStorage.setItem("tasks", JSON.stringify(updated));
+}
+
    useEffect(()=>{
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     setData(tasks);
@@ -22,8 +37,6 @@ function handlerDeletTask(id){
    localStorage.setItem("tasks", JSON.stringify(updateList))
 
 }
-
-    const {title,due,priority }=props
     const navigate=useNavigate()
 
     const priorityColor={
@@ -38,9 +51,9 @@ function handlerDeletTask(id){
                 <Buttons label="+Add New Task" onClick={()=>{navigate("/create")}} className="bg-sky-900 text-white p-2 rounded-2xl hover:bg-sky-950"/>
                 <h2 className="text-4xl text-sky-900  ">Tasks</h2>
                  <ul className="flex gap-3 bg-gray-200 items-center p-1.5 rounded-md ">
-                <li className="bg-white rounded-md px-3">All</li>
-                <li>Done</li>
-                <li>Not Done</li>
+                <li onClick={()=>setFilter("all")} className={`rounded-md px-3 cursor-pointer  ${filter==="all"?"bg-white":""}`}>All</li>
+                <li onClick={()=>setFilter("done")} className={`rounded-md px-3 cursor-pointer ${filter==="done"?"bg-white":""} `}>Done</li>
+                <li onClick={()=>setFilter("notdone")} className={`rounded-md px-3 cursor-pointer  ${filter==="notdone"?"bg-white":""}`} >Not Done</li>
                 </ul>
             </div>
 
@@ -48,11 +61,11 @@ function handlerDeletTask(id){
                 {data.length===0?(
                 <p className="text-center mt-5 text-gray-500">No tasks found.</p>
                 ):
-                (data.map((task)=>{
+                (filteredTask.map((task)=>{
                 return (
-                <div key={task.id} className="task flex justify-between py-6 px-4 bg-blue-100 my-2 rounded-2xl">
+                <div key={task.id} className={`task flex justify-between py-6 px-4 bg-blue-100 my-2 rounded-2xl ${task.completed?"bg-stone-300":""}`}>
                 <div className="taskDetails flex gap-2">
-                <Checkbox onChange={()=>{}}/>
+                <Checkbox checked={task.completed} onChange={()=>{toggleComplete(task.id)}}/>
                 <div className="flex flex-col gap-1">
                     <h4 className="text-xl text-blue-900">{task.taskName}</h4>
                     <h5 className="text-sm text-stone-700">{task.due}</h5>

@@ -15,7 +15,9 @@ export default function CreateNewTsk(){
         id:Date.now(),
         "taskName":"",
         "due":null,
-        "Priority":""
+        "Priority":"",
+        "completed":false,
+        
     })
 
     function handlerChange(e){
