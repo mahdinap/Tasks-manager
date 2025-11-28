@@ -12,6 +12,7 @@ import TrashIcon from "../components/icons/trashIcon";
 export default function Tasks(props){
     const [data,setData]=useState([])
     const [filter,setFilter]=useState("all")
+    const [loading,setLoading]=useState(true)
 
     const itemVariants = {
     initial: { opacity: 0, y: -8 },
@@ -36,6 +37,7 @@ export default function Tasks(props){
    useEffect(()=>{
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     setData(tasks);
+    setLoading(false)
 }, []);
 
 function handlerDeletTask(id){
@@ -68,7 +70,7 @@ function handlerDeletTask(id){
             <AnimatePresence>
 
             
-                {data.length===0?(
+                {!loading && filteredTask.length===0 ? (
                 <p className="text-center mt-5 text-gray-500">No tasks found.</p>
                 ):
                 (filteredTask.map((task)=>{
