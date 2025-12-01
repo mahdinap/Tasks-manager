@@ -6,6 +6,12 @@
       "username": "mahdi",
       "remmberPass": true,
       "id": 1
+    },
+    {
+      "email": "mahdi.nap57@gmail.com",
+      "password": "$2a$10$WPr0mp1wcsGu8cdqN61YoOHz/enA6bcl4/wBBsCBIzvqenziJEwZW",
+      "username": "09374615636",
+      "id": 2
     }
   ]
 }

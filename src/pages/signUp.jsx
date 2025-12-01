@@ -5,33 +5,41 @@ import Subtitle from "../components/subtitle";
 import Input from "../inputs";
 import { useEffect } from "react";
 import axios from "axios"
+import {z} from "zod"
+import {useForm} from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
 
 
+
+const schema=z.object({
+    username:z.string().min(3,"must be minimum 4 charecters"),
+    email:z.string().email("invalid email"),
+    password:z.string().min(8,"must be minimum 9 charcters")
+})
 
 export default function SingUp(){
     useEffect(() => {
   document.title = "Sign UP";
 }, []);
 
-    const [info,setInfo]=useState({
-        "username":"",
-        "email":"",
-        "password":"",
-        "remmberPass":false
+    const {
+    register,
+    handleSubmit,
+    formState:{ errors }
+    }=useForm({
+        resolver:zodResolver(schema),
+        mode:"onBlur"
     })
-    function onChange(e){
-        const id=e.target.id
-        const value=e.target.type==="checkbox"?e.target.checked:e.target.value
-        setInfo((prev)=>({...prev,[id]:value}))
-    }
-    async function handleSubmit(event){
-        event.preventDefault()
+
+    
+    async function Submit(data){
         try{
 
-            const res=await axios.post("http://localhost:5000/register",info)
+            const res=await axios.post("http://localhost:5000/register",data)
             console.log(res)
             localStorage.setItem("Token",res.data.accessToken)
-            localStorage.setItem("name",info.username)
+            localStorage.setItem("name",data.username)
+            console.log(errors);
             
         }catch(res){
 
@@ -54,11 +62,14 @@ export default function SingUp(){
 
             <h1 className="text-sky-950 text-4xl text-center font-bold font-suse ">Sign Up</h1>
         
-            <form className="flex flex-col gap-5 p-5" onSubmit={handleSubmit}>
-            <Input label="User Name" placholder="Enter Your User Name" type="text" onChange={onChange} value={info.username} id='username' className="p-2 shadow-md border border-stone-200 rounded-md"/>
-            <Input label="Email" placholder="Enter Your User Email" type="email" onChange={onChange} value={info.email} id='email' className="p-2 shadow-md border border-stone-200 rounded-md" />
-            <Input label="Password" placholder="" type="password" id='password' onChange={onChange} value={info.password} className="p-2 shadow-md border border-stone-200 rounded-md"/>
-            <Checkbox label="Remmeber Password" id="remmberPass" onChange={onChange} value={info.remmberPass} className="p-2 shadow-md border border-stone-200 rounded-md" />
+            <form className="flex flex-col gap-2 p-5" onSubmit={handleSubmit(Submit) }>
+            <Input label="User Name" placholder="Enter Your User Name" type="text"  id='username' className="p-2 shadow-md border border-stone-200 rounded-md" {...register("username")}/>
+            {errors.username && <p className="text-red-700">{errors.username.message}</p>}
+            <Input label="Email" placholder="Enter Your User Email" type="email"  id='email' className="p-2 shadow-md border border-stone-200 rounded-md" {...register("email")} />
+            {errors.email && <p className="text-red-700">{errors.email.message}</p>}
+            <Input label="Password" placholder="" type="password" id='password'  className="p-2 shadow-md border border-stone-200 rounded-md" {...register("password")}/>
+            {errors.password && <p className="text-red-700">{errors.password.message}</p>}
+            <Checkbox label="Remmeber Password" id="remmberPass"  className="p-2 shadow-md border border-stone-200 rounded-md" />
             <Buttons label="Sign Up" className="bg-sky-900 hover:bg-sky-950 text-white rounded-md py-2"  />
 
             </form>

@@ -1,11 +1,14 @@
-export default function Input(prop){
-    const {placholder,type,label,value,name,onChange,id,className}=prop
+import { forwardRef } from "react"
+
+const Input=forwardRef ((props,ref)=>{
+    const {placholder,type,label,name,id,className,...res}=props
     return(
         <>
         <label>{label}</label>
-        <input type={type} placeholder={placholder} value={value} name={name} onChange={onChange} id={id}
+        <input type={type} placeholder={placholder}  name={name}  id={id} ref={ref} {...res}
         className={className}/>
         </>
     )
 
-}
+})
+export default Input
