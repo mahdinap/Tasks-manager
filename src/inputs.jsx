@@ -5,7 +5,7 @@ const Input=forwardRef ((props,ref)=>{
     return(
         <>
         <label>{label}</label>
-        <input type={type} placeholder={placholder}  name={name}  id={id} ref={ref} {...res} required
+        <input type={type} placeholder={placholder}  name={name}  id={id} ref={ref} {...res} 
         className={className}/>
         </>
     )
