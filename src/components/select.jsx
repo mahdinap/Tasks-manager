@@ -5,7 +5,7 @@ function  Select(props){
         <>
         <label className="text-md  flex flex-col gap-2">
             Priority
-            <select id={id} className="p-2 shadow-md border border-stone-200 rounded-md hover:cursor-pointer" value={value} onChange={onChange} >
+            <select required id={id} className="p-2 shadow-md border border-stone-200 rounded-md hover:cursor-pointer" value={value} onChange={onChange} >
             <option value="" hidden>Select priority</option>
             <option value="high">High</option>
             <option value="medium">Medium</option>
