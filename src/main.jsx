@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import { RouterProvider } from "react-router/dom";
 
 import './index.css'
@@ -11,6 +11,13 @@ import Wellcome from './pages/wellcom.jsx';
 import CreateNewTsk from './pages/create.jsx';
 import Tasks from './pages/tasks.jsx';
 
+const isAuth=()=>{
+  return localStorage.getItem("Token") !==null
+}
+
+function ProtectedPage({element}){
+return isAuth() ? element: <Navigate to="/login"/>
+}
 
 const router = createBrowserRouter([
   {
@@ -36,11 +43,11 @@ const router = createBrowserRouter([
    ,
   {
     path: "/create",
-    element: <CreateNewTsk/>,
+    element:<ProtectedPage element={<CreateNewTsk/>} />,
   },
   {
     path:"/tasks",
-    element:<Tasks/>
+    element:<ProtectedPage element={<Tasks/>}/>
 
   }
 ]);

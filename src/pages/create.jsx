@@ -34,12 +34,12 @@ export default function CreateNewTsk(){
     }
 
     function handlerSubmiit(e){
+        e.preventDefault();
         const newErrors = {
         "nameError": task.taskName ? "" : "Name is required",
         "dueError": task.due ? "" : "Due date is required",
         "Priority": task.Priority ? "" : "Priority is required"
     };
-    e.preventDefault();
     setError(newErrors)
     if(newErrors.nameError || newErrors.dueError || newErrors.Priority) return
         

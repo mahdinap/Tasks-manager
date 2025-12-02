@@ -2,16 +2,9 @@
   "users": [
     {
       "email": "mahdi1nap@gmail.com",
-      "password": "$2a$10$pBIi7xFlXvjY6Zu/1Umse.E.x3Wx6hum9N3jhR3SD4wXZ6xapDFbS",
-      "username": "mahdi",
-      "remmberPass": true,
+      "password": "$2a$10$FNClDVSpPMVYC91ZCi9K2uOsH/F.2utMt79WIa3uh1sWH2UWtz4MK",
+      "username": "mahdiii.n91",
       "id": 1
-    },
-    {
-      "email": "mahdi.nap57@gmail.com",
-      "password": "$2a$10$WPr0mp1wcsGu8cdqN61YoOHz/enA6bcl4/wBBsCBIzvqenziJEwZW",
-      "username": "09374615636",
-      "id": 2
     }
   ]
 }
