@@ -39,6 +39,7 @@ async function handler(data){
         try{
             const res= await axios.post("http://localhost:5000/signin",data)
             console.log(res);
+            localStorage.setItem("Token",res.data.accessToken)
             
         }catch(res){
             console.log("Error is:",res.response.data);
